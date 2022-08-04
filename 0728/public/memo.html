@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+    <h1>나의 메모</h1>
+    <form method="POST" action="process/save">
+        <table>
+            <tr>
+                <td><label>작성자</label></td>
+                <td><input type="text" id="auth" name="auth"/></td>
+            </tr>
+            <tr>
+                <td><label>작성일시</label></td>
+                <td><input type="text" id="date" name="date"/></td>
+            </tr>
+            <tr>
+                <td><label>내용</label></td>
+                <td><textarea name="content" id="content" cols="22" rows="10"></textarea></td>
+            </tr>
+        </table>
+        <input type="submit" value="전송"/>
+        <input type="button" value="닫기"/>
+    </form>
+</body>
+<script type="text/javascript">
+    var today = new Date();   
+
+    var year = today.getFullYear();
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+
+    var dateString = year + '-' + month  + '-' + day;
+
+    var hours = ('0' + today.getHours()).slice(-2); 
+    var minutes = ('0' + today.getMinutes()).slice(-2);
+    var seconds = ('0' + today.getSeconds()).slice(-2); 
+
+    var timeString = hours + ':' + minutes  + ':' + seconds;
+
+    var date = dateString + ' ' + timeString;
+
+    document.getElementById("date").value = date;
+</script>
+</html>

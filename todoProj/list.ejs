@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>List Page</h1>
+    <form method="POST" action="insert">
+        <table>
+            <tr>
+                <td><input type="text" name="contents"/></td>
+                <td><input type="submit"/></td>
+            </tr>
+        </table>
+    </form>
+    <hr>
+    <table width="100%">
+        <tr>
+            <th>ID</th>
+            <th>할 일</th>
+            <th>완료 여부</th>
+            <th>완료 처리</th>
+            <th>삭제</th>
+        </tr>
+        <% data.forEach(function(item, index) { %>
+        <tr>
+            <th><%= item.id %></th>
+            <th><%= item.contents %></th>
+            <th>
+                <% if(item.yesno){ %>
+                    완료
+                <% }else{ %>
+                    진행 중
+                <% }%>
+            </th>
+            <th>
+                <% if(item.yesno){ %>
+                    <button class="btn btn-warning" onClick="location.href='/edit/<%= item.id %>'">진행 중</button>
+                <% }else{ %>
+                    <button class="btn btn-success" onClick="location.href='/edit/<%= item.id %>'">완료</button>
+                <% }%>
+            </th>
+            <th><button class="btn btn-danger" onClick="location.href='/delete/<%= item.id %>'">DELETE</button></th>
+        </tr>   
+        <% }); %>
+    </table>
+</body>
+</html>
